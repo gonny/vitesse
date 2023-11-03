@@ -85,10 +85,10 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{js,vue,ts,tsx,mjs,mts}": [
+    "src/**/*.{js,vue,ts,tsx,mjs,mts,json}": [
       "eslint --fix"
     ],
-    "locales/**/*.{json,yaml,yml}": [
+    "locales/*.{json,yaml,yml}": [
       "eslint --fix"
     ]
   }
