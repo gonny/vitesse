@@ -9,12 +9,12 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Markdown from 'unplugin-vue-markdown/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
-import { VitePWA } from 'vite-plugin-pwa'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import LinkAttributes from 'markdown-it-link-attributes'
-import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shikiji'
 import WebfontDownload from 'vite-plugin-webfont-dl'
+import { imagetools } from 'vite-imagetools'
+import { unheadVueComposablesImports } from '@unhead/vue'
 
 export default defineConfig({
   resolve: {
@@ -28,6 +28,9 @@ export default defineConfig({
       plugins: {
         vue: Vue({
           include: [/\.vue$/, /\.md$/],
+          script: {
+            defineModel: true
+          }
         }),
       },
     }),
@@ -40,14 +43,27 @@ export default defineConfig({
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts(),
 
+    imagetools({
+      defaultDirectives: (url) => {
+        if (url.searchParams.has('format') && url.searchParams.getAll('format').some((e) => { return e.includes('webp') })) {
+          return new URLSearchParams({
+            effort: '6',
+            smartSubsample: 'true',
+            quality: '70',
+          })
+        }
+        return new URLSearchParams()
+      },
+    }),
+
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
         'vue',
         'vue-router',
         'vue-i18n',
-        '@vueuse/head',
         '@vueuse/core',
+        unheadVueComposablesImports
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
@@ -55,6 +71,11 @@ export default defineConfig({
         'src/stores',
       ],
       vueTemplate: true,
+      eslintrc: {
+        enabled: true, // Default `false`
+        filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+        globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+      }
     }),
 
     // https://github.com/antfu/unplugin-vue-components
@@ -66,15 +87,11 @@ export default defineConfig({
       dts: 'src/components.d.ts',
     }),
 
-    // https://github.com/antfu/unocss
-    // see uno.config.ts for config
-    Unocss(),
-
     // https://github.com/unplugin/unplugin-vue-markdown
     // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
     Markdown({
       wrapperClasses: 'prose prose-sm m-auto text-left',
-      headEnabled: true,
+      headEnabled: "unhead",
       async markdownItSetup(md) {
         md.use(LinkAttributes, {
           matcher: (link: string) => /^https?:\/\//.test(link),
@@ -94,33 +111,7 @@ export default defineConfig({
     }),
 
     // https://github.com/antfu/vite-plugin-pwa
-    VitePWA({
-      registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
-      manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: '/pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable',
-          },
-        ],
-      },
-    }),
+
 
     // https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n
     VueI18n({

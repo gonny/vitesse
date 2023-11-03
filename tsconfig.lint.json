@@ -28,7 +28,7 @@
     "skipLibCheck": true
   },
   "parserOptions": {
-    "extraFileExtensions": [".vue"]
+    "extraFileExtensions": ['.vue']
   },
   "vueCompilerOptions": {
     "plugins": [
@@ -36,5 +36,6 @@
       "@vue-macros/volar/define-slots"
     ]
   },
-  "exclude": ["dist", "node_modules", "cypress"]
+  "exclude": ["dist", "node_modules", "cypress", "./tsconfig.json"],
+  "include": ["./**/*.ts", "./**/*.js", "./**/*.vue"]
 }
