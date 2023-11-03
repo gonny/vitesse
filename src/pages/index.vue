@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { defineOptions, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { useUserStore } from '~/stores/user'
+
 defineOptions({
   name: 'IndexPage',
 })

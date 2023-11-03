@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import { availableLocales, loadLanguageAsync } from '~/modules/i18n'
+import { toggleDark } from '~/composables/dark';
 
 const { t, locale } = useI18n()
 

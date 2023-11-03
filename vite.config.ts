@@ -57,21 +57,21 @@ export default defineConfig({
     }),
 
     // https://github.com/antfu/unplugin-auto-import
-    AutoImport({
-      imports: [
-        'vue',
-        'vue-router',
-        'vue-i18n',
-        '@vueuse/core',
-        unheadVueComposablesImports
-      ],
-      dts: 'src/auto-imports.d.ts',
-      dirs: [
-        'src/composables',
-        'src/stores',
-      ],
-      vueTemplate: true
-    }),
+    // AutoImport({
+    //   imports: [
+    //     'vue',
+    //     'vue-router',
+    //     'vue-i18n',
+    //     '@vueuse/core',
+    //     unheadVueComposablesImports
+    //   ],
+    //   dts: 'src/auto-imports.d.ts',
+    //   dirs: [
+    //     'src/composables',
+    //     'src/stores',
+    //   ],
+    //   vueTemplate: true
+    // }),
 
     // https://github.com/antfu/unplugin-vue-components
     Components({
