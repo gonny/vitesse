@@ -1,12 +1,12 @@
 {
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@8.9.2",
+  "packageManager": "pnpm@8.10.2",
   "scripts": {
     "build": "vite-ssg build",
     "dev": "vite",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "serve": "vite preview",
     "preview-https": "serve dist",
     "test": "vitest",
     "test:e2e": "cypress open",
@@ -69,7 +69,7 @@
     "unplugin-vue-components": "^0.25.2",
     "unplugin-vue-macros": "^2.6.2",
     "unplugin-vue-markdown": "^0.24.3",
-    "vite": "^4.5.0",
+    "vite": "5.0.0-beta.15",
     "vite-imagetools": "^6.2.1",
     "vite-plugin-inspect": "^0.7.41",
     "vite-plugin-pages": "^0.31.0",
