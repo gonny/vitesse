@@ -6,7 +6,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <main p="x4 y10" text="center teal-700 dark:gray-200">
+  <main class="px-4 py-10 text-center teal-700 dark:gray-200">
     <div class="text-4xl">
       <div i-carbon-warning class="inline-block" />
     </div>

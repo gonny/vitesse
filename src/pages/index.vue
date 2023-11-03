@@ -16,8 +16,8 @@ const { t } = useI18n()
 
 <template>
   <div>
-    <div text-4xl>
-      <div i-carbon-campsite inline-block />
+    <div class="text-4xl">
+      <div i-carbon-campsite class="inline-block" />
     </div>
     <p>
       <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">
@@ -25,7 +25,7 @@ const { t } = useI18n()
       </a>
     </p>
     <p>
-      <em text-sm opacity-75>{{ t('intro.desc') }}</em>
+      <em class="text-sm opacity-75">{{ t('intro.desc') }}</em>
     </p>
 
     <div py-4 />
@@ -40,7 +40,7 @@ const { t } = useI18n()
 
     <div>
       <button
-        m-3 text-sm btn
+        class="m-3 text-sm btn"
         :disabled="!name"
         @click="go"
       >

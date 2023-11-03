@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { defineModel } from 'vue'
-const modelValue = defineModel<{
-  modelValue: string;
-}>();
+const modelValue = defineModel<string>();
 </script>
 
 <template>

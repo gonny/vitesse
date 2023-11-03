@@ -28,7 +28,7 @@
     "skipLibCheck": true
   },
   "parserOptions": {
-    "extraFileExtensions": ['.vue']
+    "extraFileExtensions": [".vue"]
   },
   "vueCompilerOptions": {
     "plugins": [

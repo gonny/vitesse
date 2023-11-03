@@ -438,7 +438,7 @@ video {
   --color-link: rgb(234 88 12);
   --color-link-hover: rgb(249 115 22);
   --color-text: rgb(68 64 60);
-  --color-background: #653808;
+  --color-background: #fff;
   /* @apply text-zinc-700; */
 }
 
@@ -739,8 +739,6 @@ main section {
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.5rem;
   text-rendering: optimizeLegibility;
